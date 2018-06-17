@@ -236,7 +236,7 @@ function searchHandle(resp){
 		if(imageLink == null || imageLink == "") continue;
 		var content = "<div class='card img-loaded'>" + 
       					"<a href='single.html?" + x + "'>" + 
-        				"<img id='img" + x  + "' src=\"" +  imageLink + "\" alt='Card image cap'>" + 
+        				"<img id='img" + x  + "' src=\"" +  imageLink + "\">" + 
       					"</a></div>";
 
 		$("#recipe_content").append(content);
@@ -261,12 +261,14 @@ function showRecipe(){
 
 	var item = result[cur];
 	var procedure = item.procedure.replaceAll('\n','</br>'); 
+	var materials = item.materials.replaceAll('\n','</br>'); 
 	console.log(procedure);
 
 	$("#recipe_img").attr("src", item.imageLink);
+	$(".mb-8").attr("style", "text-align:center");
 
 	$("#recipeName").text(item.name);
 	$("#description").text(item.description);
-	$("#materials").text(item.materials);
+	$("#materials").append(materials);
 	$("#procedure").append(procedure);
 }
