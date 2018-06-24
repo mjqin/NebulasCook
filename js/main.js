@@ -233,7 +233,9 @@ function searchHandle(resp){
 	$("#loading").css({ display: 'none' });
 	for(var x in result){
 		var imageLink = result[x].imageLink;
-		if(imageLink == null || imageLink == "") continue;
+		if(imageLink == null || imageLink == "" || !imageLink.startsWith("http")) continue;
+		image =  new Image();
+		image.src = imageLink;
 		var content = "<div class='card img-loaded'>" + 
       					"<a href='single.html?" + x + "'>" + 
         				"<img id='img" + x  + "' src=\"" +  imageLink + "\">" + 
